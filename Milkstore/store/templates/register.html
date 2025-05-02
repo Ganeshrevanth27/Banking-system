@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- Form that submits to verify_otp view -->
+    <form method="POST" action="{% url 'register' %}">
+
+      {% csrf_token %}
+      
+      <label>Username:</label>
+      <input type="text" name="username" placeholder="Username" required><br><br>
+
+      <label>Password:</label>
+      <input type="password" name="password" placeholder="Enter the password" required><br><br>
+
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter the email" required><br><br>
+
+      <label>Enter OTP sent to your email:</label><br>
+      <input type="text" name="otp" required><br><br>
+
+      <!-- Submits form to verify_otp -->
+      <button type="submit">Verify</button>
+    </form>
+
+    <!-- Button that links to send OTP view (send_otp) -->
+    <form method="POST" action="{% url 'send_otp_email' %}">
+      {% csrf_token %}
+      <input type="hidden" name="user_id" value="{{ user.id }}">
+      <button type="submit">Send OTP</button>
+    </form>
+    
+
+    <!-- Login link -->
+    <p>
+      Already have an account? 
+      <a href="{% url 'login' %}">Login</a>
+    </p>
+  </body>
+</html>

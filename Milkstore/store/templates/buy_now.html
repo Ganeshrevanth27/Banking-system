@@ -1,0 +1,68 @@
+<!-- templates/store/buy_now.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Now - {{ product.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+        }
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>You selected to buy:</h2>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <p><strong>{{ product.name }}</strong></p>
+        <p class="price">Price: ₹{{ product.price }}</p>
+
+        <!-- Add to cart or checkout link -->
+        <a href="#" class="btn">Proceed to Checkout</a>
+        <a href="{%url 'add_to_cart' product.id%}" class="btn">Add to cart</a>
+    </div>
+</body>
+</html>
